@@ -32,7 +32,6 @@ nav ul li{
     padding: 10px 10px;
 }
 #container>div{
-    position: ;
     line-height: 2em
 }
 .encapsulator{
@@ -74,9 +73,6 @@ nav ul li{
 }
 .board>button{
     left: 10px;
-}
-.board>button:hover, .board>button:focus{
-    /* outline: 1px solid; */
 }
 .board [type=number]{
     width: 50px; font-size: inherit;
