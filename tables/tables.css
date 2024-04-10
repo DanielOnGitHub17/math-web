@@ -6,7 +6,6 @@ body{
 *{outline-color: #efefef}
 button, [type=button]{font: bold 20px "courier";border-color: #efefef; cursor: pointer}
 button:enabled:active, [type=button]:active{border-style: inset; outline: none}
-button:focus, [type=button]:focus{outline: none;}
 /*Navi*/
 nav ul{
     display: flex; list-style-type: none; background: #efefef;
@@ -53,14 +52,17 @@ nav ul li{
 
 /*for the boards (on which equations are written)*/
 .board, .cover{
-    width: fit-content; border: 1px solid #0000001c;
-    position: relative; background: transparent;
+    width: 90vw; border: 1px solid #0000001c;
+    position: relative;
     padding: 10px; display: block; font-weight: bold;
+    height: fit-content;
+    overflow: scroll;
 }
 .cover{
-    background: white; z-index: -1; position: absolute;
+    background: white; 
+    z-index: -1;
     opacity: 0; transform: translateY(-69px);
-    text-align: right; transition: opacity .5s;
+    text-align: left; transition: opacity .5s;
     font-size: 70%;
 }
 .board *{
@@ -73,25 +75,28 @@ nav ul li{
 .board>button{
     left: 10px;
 }
+.board>button:hover, .board>button:focus{
+    /* outline: 1px solid; */
+}
 .board [type=number]{
     width: 50px; font-size: inherit;
     text-align: right; border: none;
-    left: 15px; background: transparent; font-weight: bold;
+    background: transparent; font-weight: bold;
+    padding-right: 15px;
+    left: 2%;
 /*     border-left: 3px double; */
 }
 .board [type=number]:hover, .board [type=number]:focus{
     border: 1px solid #e3e3e3; outline: none;
 }
 .board button:last-child{
-    left: 110%; position: absolute; top: 19.4px;
+    margin-left: 10%;
+    z-index: 100;
 }
 /*end boards*/
 /*end EQUATIONS*/
 
 /*start TABLES*/
-#TABLES{
-    s
-}
 #TABLES table{
     position: relative;
     border: 1px solid #e3e3e3;

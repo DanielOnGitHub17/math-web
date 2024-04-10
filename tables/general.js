@@ -28,29 +28,23 @@ let make = (name='div')=>document.createElement(name)
   , getAll = (query)=>[...document.querySelectorAll(query)];
 let identify = ()=>getAll('[id]').forEach(i=>window[i.id] = i)
   , add = (what,to=document.body)=>to.appendChild(what)
-  , bx = (who)=>who.getBoundingClientRect();
-
-EQUATIONS = EQUATIONS;
-let equations = []
+  , bx = (who)=>who.getBoundingClientRect()
+  , container = get("container")
+  , EQUATIONS = get("EQUATIONS")
+  , equations = []
   , addEq = document.querySelector('#ADDEQUATION button')
   , coefs = ['a', 'b', 'c', 'd', 'e', 'f']
-  , //equations var
-
-tables = [], 
-  graphs = [];
-//tables var
-TABLES = TABLES;
-GRAPHS = GRAPHS;
-
-navi = document.querySelector('ul'),
-selected = {
+  , tables = []
+  , TABLES = get("TABLES")
+  , navi = document.querySelector('ul')
+  , selected = {
     top: '5px',
     background: 'white',
     borderTop: 'inherit',
     right: '3px',
     cursor: 'default'
-}
-disselected = {
+  }
+  , disselected = {
     top: '',
     background: '',
     borderTop: '',
@@ -58,7 +52,6 @@ disselected = {
     cursor: ''
 };
 
-container = container;
 Array.from(navi.children).forEach(i=>{
     i.onclick = function select() {
         Array.from(navi.children).forEach(j=>{
@@ -81,9 +74,9 @@ function show(which) {
 }
 addEq.addEventListener('click', event=>{
     let equation = new Equation(document.querySelector('#ADDEQUATION select').value)
-      , table = new Table(equation),
-      graph = new Graph(table);
+      , table = new Table(equation);
+    //   graph = new Graph(table);
     equations.push(equation)
     tables.push(table)
-    graphs.push(graph)
+    // graphs.push(graph)
 })

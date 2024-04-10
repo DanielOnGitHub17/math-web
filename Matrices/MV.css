@@ -2,13 +2,18 @@
     background: #efefef; font-size: inherit;
     border: var(--b);
 }
+body{
+    width: fit-content;
+}
 html{
     --b: 1px solid #0000001c;
 }
 table{
     border: var(--b);
 }
-tr{padding: 0;margin: 0;}
+tr{
+    padding: 0;margin: 0;
+}
 td{
     padding-right: 7px;
 }
