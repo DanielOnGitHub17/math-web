@@ -34,7 +34,7 @@ function addVM(to, dim=new Vec(1, 2), obj, prop){
     }
     to.appendChild(obj[prop]);
 }
-let Vectors = [], Matrices = [];
+let Vectors = [], matrices = [];
 function createHUD(hud){
         let HUD = make();
         HUD.className = 'HUD';

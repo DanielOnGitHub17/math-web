@@ -1,4 +1,9 @@
-ADDMATRIX.children[3].onclick = ()=>{let mat = new Matrix(new Vec(ADDMATRIX.children[0].value, ADDMATRIX.children[1].value)); Matrices.push(mat); mat.space.before(Matrices.indexOf(mat)+1+'.'); mat.space.scrollIntoView()};
+ADDMATRIX.children[3].onclick = ()=>{
+    let mat = new Matrix(new Vec(ADDMATRIX.children[0].value, ADDMATRIX.children[1].value));
+    matrices.push(mat);
+    mat.space.before(matrices.indexOf(mat)+1+'.');
+    mat.space.scrollIntoView()
+    };
 let mhud = {general: {det: 'For the Matrix in general:<br>Determinant: ', kind: '<br>Type of Matrix: ', dim: '. Dimension: '},
  specific: {row: 'Selected:<br>Position of selected: Row ', col: ', Column ',
  minor: '<br>Minor of selected: ', cofactor: '<br>Co-factor of selected: ',
@@ -57,8 +62,10 @@ class Matrix{
         }
         this.space.solve.onclick = (dd, s =this)=>{
             if (!this.space.operation.value||!this.space.second.content||!this.space.second.content.length) return;
-            let dec = {'+': 'sum', '-': 'difference', 'X': 'product'}, v = s.space.operation.value;
-            this.fromArray(s[dec[v]?dec[v]:v], s.space.answer, 0, 0);
+            let dec = {'+': 'sum', '-': 'difference', 'X': 'product'}
+            , operation = s.space.operation.value;
+            this.fromArray(s[dec[operation]?dec[operation]:operation] // wow!
+                , s.space.answer, 0, 0);
             dd.target.disabled = true;
         }
         this.space.col.onchange = ()=>{
@@ -112,7 +119,6 @@ class Matrix{
             }
         }//use forEach later if you think it will be more convinient
         if (unidi[0]) kind.push('diagonal'); if (unidi[1]) kind.push('unit');
-        kind.push('dont forget unidi')
         return kind;
     }
     tran(n=this.content){
@@ -158,7 +164,7 @@ class Matrix{
         // addition for the other (recursive) det calls instead of using 0
         // i'll try now. - it worked - thank you Jesus (i was 
         // thinking of giving up and doing another thing(ludo game)
-        // next is multiplication -then i'm done with Matrices)
+        // next is multiplication -then i'm done with matrices)
         //except I want to do a step by step solving process (how I got it feature)
         return ans; 
     }
