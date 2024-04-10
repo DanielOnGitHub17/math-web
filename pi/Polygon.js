@@ -161,12 +161,21 @@ class Polygon {
         return [firstPoint[0]+vec[0], firstPoint[1]+vec[1]];
     }
     static getNextPointThroughCoord(firstPoint, angle, length){
-        //first calculate y = mx + c;
+        // first calculate y = mx + c;
+        // mathematical algorithm to get next point by
+        // distance formula and re-substituting
+        // distance formula should be solved with variables and re-simplified
+        // I did not write this when I coded it. WOW!
         let a = firstPoint[0], b = firstPoint[1]
-            ,m = tan(angle), c = b-m*a
-            ,A = (1+m**2), B = (2*(m*(c-b) - a))
-            ,C = (a**2 + (c-b)**2 - length**2), x = solveQuadraticEquation(A, B, C)
-            ,y = x.length?x.map(i=>(m*i + c)):[];
+            , m = tan(angle)
+            , c = b-m*a // constant in linear equation (y-intercept)
+            , A = 1+m**2
+            , B = 2*(m*(c-b) - a)
+            , C = a**2 + (c-b)**2 - length**2
+            , x = solveQuadraticEquation(A, B, C)
+            , y = x.length?x.map(i=>(m*i + c)):[]; // resubstitute 'x'=i
+            // change y to x.length?[m*x[0] + c]:[]
+            // since the first returned by solveQuadraticEquation is the largest
        // console.log(x[0]*m + c))
         return y.length?[x[0], y[0]]:[];
     }

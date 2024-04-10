@@ -1,6 +1,6 @@
 function solveQuadraticEquation(a, b, c){
     let d = Math.sqrt(b**2 - 4*a*c)/(2*a);
-    if (!d) return [];
+    if (!d) return []; // bug? how about zero?
     let e = -b/(2*a);
     return [e+d, e-d]
 }
