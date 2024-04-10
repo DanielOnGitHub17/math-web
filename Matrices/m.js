@@ -61,7 +61,7 @@ class Matrix{
             if(pm.includes(op)) this.fromArray(copy(this.content, 0), this.space[t2s[0]]);
         }
         this.space.solve.onclick = (dd, s =this)=>{
-            if (!this.space.operation.value||!this.space.second.content||!this.space.second.content.length) return;
+            if (!this.space.operation.value) return;
             let dec = {'+': 'sum', '-': 'difference', 'X': 'product'}
             , operation = s.space.operation.value;
             this.fromArray(s[dec[operation]?dec[operation]:operation] // wow!
@@ -176,7 +176,8 @@ class Matrix{
             for (let j = 0; j < this.dim.y; j++) {
                 r.push(this.detfrom(this.cofactorset(this.content, i, j)))
             };ans.push(r);
-        };return ans;
+        };
+        return ans;
     };
     get cofactor(){
         let ans = this.minor;
@@ -184,7 +185,8 @@ class Matrix{
             for (let j = 0; j < this.dim.y; j++) {
                 ans[i][j] *= ((-1)**(i+j))
             }
-        }; return ans;
+        }; 
+        return ans;
     };
     get adjoint(){return this.tran(this.cofactor)};
     get inverse(){return this.scale(1/this.det, this.adjoint)}
