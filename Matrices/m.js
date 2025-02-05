@@ -1,4 +1,9 @@
-ADDMATRIX.children[3].onclick = ()=>{let mat = new Matrix(new Vec(ADDMATRIX.children[0].value, ADDMATRIX.children[1].value)); Matrices.push(mat); mat.space.before(Matrices.indexOf(mat)+1+'.'); mat.space.scrollIntoView()};
+ADDMATRIX.children[3].onclick = ()=>{
+    let mat = new Matrix(new Vec(ADDMATRIX.children[0].value, ADDMATRIX.children[1].value));
+    matrices.push(mat);
+    mat.space.before(matrices.indexOf(mat)+1+'.');
+    mat.space.scrollIntoView()
+    };
 let mhud = {general: {det: 'For the Matrix in general:<br>Determinant: ', kind: '<br>Type of Matrix: ', dim: '. Dimension: '},
  specific: {row: 'Selected:<br>Position of selected: Row ', col: ', Column ',
  minor: '<br>Minor of selected: ', cofactor: '<br>Co-factor of selected: ',
@@ -56,9 +61,11 @@ class Matrix{
             if(pm.includes(op)) this.fromArray(copy(this.content, 0), this.space[t2s[0]]);
         }
         this.space.solve.onclick = (dd, s =this)=>{
-            if (!this.space.operation.value||!this.space.second.content||!this.space.second.content.length) return;
-            let dec = {'+': 'sum', '-': 'difference', 'X': 'product'}, v = s.space.operation.value;
-            this.fromArray(s[dec[v]?dec[v]:v], s.space.answer, 0, 0);
+            if (!this.space.operation.value) return;
+            let dec = {'+': 'sum', '-': 'difference', 'X': 'product'}
+            , operation = s.space.operation.value;
+            this.fromArray(s[dec[operation]?dec[operation]:operation] // wow!
+                , s.space.answer, 0, 0);
             dd.target.disabled = true;
         }
         this.space.col.onchange = ()=>{
@@ -112,7 +119,6 @@ class Matrix{
             }
         }//use forEach later if you think it will be more convinient
         if (unidi[0]) kind.push('diagonal'); if (unidi[1]) kind.push('unit');
-        kind.push('dont forget unidi')
         return kind;
     }
     tran(n=this.content){
@@ -158,7 +164,7 @@ class Matrix{
         // addition for the other (recursive) det calls instead of using 0
         // i'll try now. - it worked - thank you Jesus (i was 
         // thinking of giving up and doing another thing(ludo game)
-        // next is multiplication -then i'm done with Matrices)
+        // next is multiplication -then i'm done with matrices)
         //except I want to do a step by step solving process (how I got it feature)
         return ans; 
     }
@@ -170,7 +176,8 @@ class Matrix{
             for (let j = 0; j < this.dim.y; j++) {
                 r.push(this.detfrom(this.cofactorset(this.content, i, j)))
             };ans.push(r);
-        };return ans;
+        };
+        return ans;
     };
     get cofactor(){
         let ans = this.minor;
@@ -178,7 +185,8 @@ class Matrix{
             for (let j = 0; j < this.dim.y; j++) {
                 ans[i][j] *= ((-1)**(i+j))
             }
-        }; return ans;
+        }; 
+        return ans;
     };
     get adjoint(){return this.tran(this.cofactor)};
     get inverse(){return this.scale(1/this.det, this.adjoint)}
@@ -208,14 +216,13 @@ class Matrix{
         this.content.forEach(r=>{
             let row = [];
             trans.forEach(c=>{
-                let col = [], v = 0;
+                let v = 0;
                 for (let i = 0; i < r.length; i++) {
                     v+=r[i]*c[i];
-                    // if(r.length-i==1) col.push(v)
                 }
-                // col.push(v)
-                if(trans.length-trans.indexOf(c)==1) row.push(col);
-            }); ans.push(row);
+                row.push(v);
+            });
+            ans.push(row);
         })
         return ans;
     }
@@ -229,4 +236,3 @@ class Matrix{
         ['minor', 'cofactor'].forEach(i=>this.HUD[i].textContent = this[i][y][x]);
     }
 }
-// Innocent oyosume: 07067303392
