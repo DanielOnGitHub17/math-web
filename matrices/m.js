@@ -216,14 +216,13 @@ class Matrix{
         this.content.forEach(r=>{
             let row = [];
             trans.forEach(c=>{
-                let col = [], v = 0;
+                let v = 0;
                 for (let i = 0; i < r.length; i++) {
                     v+=r[i]*c[i];
-                    // if(r.length-i==1) col.push(v)
                 }
-                // col.push(v)
-                if(trans.length-trans.indexOf(c)==1) row.push(col);
-            }); ans.push(row);
+                row.push(v);
+            });
+            ans.push(row);
         })
         return ans;
     }
@@ -237,4 +236,3 @@ class Matrix{
         ['minor', 'cofactor'].forEach(i=>this.HUD[i].textContent = this[i][y][x]);
     }
 }
-// Innocent oyosume: 07067303392
