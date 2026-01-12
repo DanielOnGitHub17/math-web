@@ -1,60 +1,60 @@
 //helpers
-function manyStyles(node, a={}) {
+function manyStyles(node, a = {}) {
     for (let x in node.style) {
         if (x in a) {
             node.style[x] = a[x];
         }
     }
 }
-function stopSign(){
-    if (['-', '+', ''].includes(event.key)){
+function stopSign() {
+    if (['-', '+', ''].includes(event.key)) {
         event.preventDefault()
     }
 }
-/*was for matrix.html*/function changeSign(){
-    event.target.textContent = (event.target.textContent == '+')?'-':'+'
+/*was for matrix.html*/function changeSign() {
+    event.target.textContent = (event.target.textContent == '+') ? '-' : '+'
 }
-function sum(array){
+function sum(array) {
     let s = 0;
-    array.forEach(i=>s+=i);
+    array.forEach(i => s += i);
     return s;
 }
 
-let make = (name='div')=>document.createElement(name)
-  , makeSVG = (name)=>document.createElementNS('http://www.w3.org/2000/svg', name)
-  , get = (id)=>document.getElementById(id)
-  , getE = (selector,value)=>document.querySelector(`[${selector}=${value}]`)
-  , getS = (query)=>document.querySelector(query)
-  , getAll = (query)=>[...document.querySelectorAll(query)];
-let identify = ()=>getAll('[id]').forEach(i=>window[i.id] = i)
-  , add = (what,to=document.body)=>to.appendChild(what)
-  , bx = (who)=>who.getBoundingClientRect()
-  , container = get("container")
-  , EQUATIONS = get("EQUATIONS")
-  , equations = []
-  , addEq = document.querySelector('#ADDEQUATION button')
-  , coefs = ['a', 'b', 'c', 'd', 'e', 'f']
-  , tables = []
-  , TABLES = get("TABLES")
-  , navi = document.querySelector('ul')
-  , selected = {
-    top: '5px',
-    background: 'white',
-    borderTop: 'inherit',
-    right: '3px',
-    cursor: 'default'
-  }
-  , disselected = {
-    top: '',
-    background: '',
-    borderTop: '',
-    right: '',
-    cursor: ''
-};
+let make = (name = 'div') => document.createElement(name)
+    , makeSVG = (name) => document.createElementNS('http://www.w3.org/2000/svg', name)
+    , get = (id) => document.getElementById(id)
+    , getE = (selector, value) => document.querySelector(`[${selector}=${value}]`)
+    , getS = (query) => document.querySelector(query)
+    , getAll = (query) => [...document.querySelectorAll(query)];
+let identify = () => getAll('[id]').forEach(i => window[i.id] = i)
+    , add = (what, to = document.body) => to.appendChild(what)
+    , bx = (who) => who.getBoundingClientRect()
+    , container = get("container")
+    , EQUATIONS = get("EQUATIONS")
+    , equations = []
+    , addEq = document.querySelector('#ADDEQUATION button')
+    , coefs = ['a', 'b', 'c', 'd', 'e', 'f']
+    , tables = []
+    , TABLES = get("TABLES")
+    , navi = document.querySelector('ul')
+    , selected = {
+        top: '5px',
+        background: 'white',
+        borderTop: 'inherit',
+        right: '3px',
+        cursor: 'default'
+    }
+    , disselected = {
+        top: '',
+        background: '',
+        borderTop: '',
+        right: '',
+        cursor: ''
+    };
 
-Array.from(navi.children).forEach(i=>{
+Array.from(navi.children).forEach(i => {
     i.onclick = function select() {
-        Array.from(navi.children).forEach(j=>{
+        Array.from(navi.children).forEach(j => {
             manyStyles(j, disselected);
             j.selected = false;
         }
@@ -69,12 +69,12 @@ Array.from(navi.children).forEach(i=>{
 )
 function show(which) {
     which = which.toUpperCase()
-    Array.from(container.children).forEach(i=>i.style.display = 'none')
+    Array.from(container.children).forEach(i => i.style.display = 'none')
     document.getElementById(which).style.display = ''
 }
-addEq.addEventListener('click', event=>{
+addEq.addEventListener('click', event => {
     let equation = new Equation(document.querySelector('#ADDEQUATION select').value)
-      , table = new Table(equation);
+        , table = new Table(equation);
     //   graph = new Graph(table);
     equations.push(equation)
     tables.push(table)
