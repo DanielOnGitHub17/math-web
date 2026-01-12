@@ -8,7 +8,8 @@
     height: 180px;
     border: 1px solid darkgray;
     overflow: scroll;
-    padding: 5px; border-bottom: none;
+    padding: 5px;
+    border-bottom: none;
 }
 
 .PiMaker>* {
@@ -23,7 +24,8 @@
     font-size: .8em;
 }
 
-.PiMaker td, .PiMaker th {
+.PiMaker td,
+.PiMaker th {
     border: 1px solid #0000001c;
     padding: 0 3px;
     text-align: center;
@@ -39,9 +41,10 @@
     flex-wrap: wrap;
     justify-content: center;
 }
+
 .root {
     line-height: 2em;
-    border: 5px groove  #0000001c;
+    border: 5px groove #0000001c;
     border-top: none;
     border-left: none;
     padding: 5px;

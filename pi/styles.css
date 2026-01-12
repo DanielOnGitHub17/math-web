@@ -10,18 +10,21 @@ body {
     outline-color: #efefef
 }
 
-button, [type=button] {
+button,
+[type=button] {
     font: 20px Math;
     border-color: #efefef;
     cursor: pointer
 }
 
-button:enabled:active, [type=button]:active {
+button:enabled:active,
+[type=button]:active {
     border-style: inset;
     outline: none
 }
 
-button:focus, [type=button]:focus {
+button:focus,
+[type=button]:focus {
     outline: none;
     box-shadow: inset 0 0 3px 0px;
 }
@@ -36,12 +39,15 @@ nav ul {
     background: #efefef;
     border: 1px solid #0000001c
 }
-li[selected=true]{
+
+li[selected=true] {
     background: white;
     position: relative;
-    top: 5px; right: 5px;
+    top: 5px;
+    right: 5px;
     cursor: default
 }
+
 hr {
     border-top: 1px solid #0000001c;
     margin-left: 5px;
@@ -66,18 +72,28 @@ nav ul li {
     border-bottom: none;
     border-right: none;
 }
-h2{
+
+h2 {
     font-size: 1.2em;
-    letter-spacing: 0.1em; word-spacing: .2em;
+    letter-spacing: 0.1em;
+    word-spacing: .2em;
     border-right: inherit;
     color: gray;
     margin: 5px;
 }
-h2>.toRight{
-    letter-spacing
+
+form {
+    /* float: right; */
+    display: flex;
+    justify-content: right;
+    flex-wrap: wrap;
+    gap: 10px;
+    padding: 5px;
+    border-top: 5px groove #0000001c;
 }
-form{/* float: right; */display: flex;justify-content: right;flex-wrap: wrap;gap: 10px;padding: 5px;border-top: 5px groove #0000001c;}
-[type=number]{
-    width: 50px; border: 2px solid #0000001c;
+
+[type=number] {
+    width: 50px;
+    border: 2px solid #0000001c;
     color: dimgray;
 }
