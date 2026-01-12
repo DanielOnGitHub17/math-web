@@ -1,52 +1,78 @@
-[id*='ADD'] select{
-    background: #efefef; font-size: inherit;
+[id*='ADD'] select {
+    background: #efefef;
+    font-size: inherit;
     border: var(--b);
 }
-body{
+
+body {
     width: fit-content;
 }
-html{
+
+html {
     --b: 1px solid #0000001c;
 }
-table{
+
+table {
     border: var(--b);
 }
-tr{
-    padding: 0;margin: 0;
+
+tr {
+    padding: 0;
+    margin: 0;
 }
-td{
+
+td {
     padding-right: 7px;
 }
-td input{
-    width: 50px; height: 30px; border: none; border-bottom: var(--b);
-    font-size: 100%; text-align: center;
+
+td input {
+    width: 50px;
+    height: 30px;
+    border: none;
+    border-bottom: var(--b);
+    font-size: 100%;
+    text-align: center;
 }
-.vector:before{
+
+.vector:before {
     content: 'Vector: ';
 }
-.matrix:before{
+
+.matrix:before {
     content: 'Matrix ';
 }
-.HUD{
+
+.HUD {
     border: var(--b);
     padding: 5px;
     width: max-content;
 }
-.HUD>div{
-    border: inherit; margin-bottom: 10px; padding: 3px
+
+.HUD>div {
+    border: inherit;
+    margin-bottom: 10px;
+    padding: 3px
 }
-.HUD span{
+
+.HUD span {
     border: inherit;
 }
-.space{
-    display: flex; align-items: center;
-     border: var(--b); gap: 5px;
+
+.space {
+    display: flex;
+    align-items: center;
+    border: var(--b);
+    gap: 5px;
     padding: 5px;
 }
-.space>select{
-    font-size: 100%; background: #efefef; border: inherit;
+
+.space>select {
+    font-size: 100%;
+    background: #efefef;
+    border: inherit;
 }
-.space>*{/* display: inline-block; */}
+
+
 /* .HUD:before, .HUD:after{
     content: 'Rs';
     font-family: -webkit-body;
@@ -59,18 +85,16 @@ td input{
     right: 200px; top: -256px;
     transform: translate(-200px, -256px);
 } */
-#ADDMATRIX:backdrop{
+#ADDMATRIX:backdrop {
     background: black;
 }
-.space>select[class]{
+
+.space>select[class] {
     transform: translate(-110px, -30px)
 }
-.space>.second, .space.answer{
 
-}
+.space>.second,
 
 div#ADDMATRIX {
     font: medium;
 }
-
-div#ADDMATRIX {}
